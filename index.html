@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>April Joy — Builder</title>
+<meta name="description" content="I build AI-powered systems, apps, and workflows — and I test them on real people before I call them done.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+<style>
+  :root{
+    --plum:#4b2142;
+    --plum-soft:#6b3a60;
+    --rose:#c86f82;
+    --sage:#9caf88;
+    --gold:#c9a24d;
+    --cream:#fdf9f3;
+    --card:#ffffff;
+    --ink:#332133;
+    --muted:#6d5c68;
+    --line:#e8ddd4;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --plum:#e8d5e2;
+      --plum-soft:#c9a8c0;
+      --rose:#d98d9d;
+      --sage:#a8bb95;
+      --gold:#d4b063;
+      --cream:#1c1119;
+      --card:#241722;
+      --ink:#ece2e8;
+      --muted:#a08f9c;
+      --line:#3a2a36;
+    }
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font:400 17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:780px;margin:0 auto;padding:0 24px}
+  a{color:var(--plum);text-decoration:none;border-bottom:1px solid var(--gold);transition:color .15s,border-color .15s}
+  a:hover{color:var(--rose);border-color:var(--rose)}
+  h1,h2,h3{font-family:Georgia,"Iowan Old Style","Times New Roman",serif;font-weight:600;color:var(--plum);line-height:1.25;margin:0}
+  p{margin:0 0 1.1em}
+  ul{margin:0 0 1.1em;padding-left:1.15em}
+  li{margin-bottom:.45em}
+  strong{color:var(--plum);font-weight:600}
+
+  /* ---------- header ---------- */
+  header{padding:88px 0 56px;border-bottom:1px solid var(--line)}
+  .eyebrow{
+    font:600 12px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--sage);margin-bottom:22px
+  }
+  h1{font-size:clamp(34px,6vw,50px);letter-spacing:-.015em}
+  .lede{font-size:20px;line-height:1.55;color:var(--muted);margin:20px 0 0;max-width:34em}
+  .meta{
+    display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:32px;
+    font-size:14.5px;color:var(--muted)
+  }
+  .meta span{display:flex;align-items:center;gap:8px}
+  .dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex:none}
+
+  /* ---------- video ---------- */
+  .video{margin:44px 0 0}
+  .frame{
+    position:relative;padding-bottom:56.25%;height:0;overflow:hidden;
+    border-radius:6px;border:1px solid var(--line);background:var(--card)
+  }
+  .frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .cap{font-size:14px;color:var(--muted);margin-top:12px;font-style:italic}
+
+  /* ---------- sections ---------- */
+  section{padding:60px 0;border-bottom:1px solid var(--line)}
+  section:last-of-type{border-bottom:0}
+  h2{font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:var(--rose);
+     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-weight:600}
+  .sub{color:var(--muted);font-size:16px;margin:14px 0 34px;max-width:36em}
+
+  /* ---------- cards ---------- */
+  .item{
+    background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);
+    border-radius:4px;padding:26px 28px;margin-bottom:18px
+  }
+  .item h3{font-size:21px;margin-bottom:4px}
+  .item .role{font-size:13.5px;color:var(--sage);font-weight:600;letter-spacing:.03em;margin-bottom:14px}
+  .item p:last-child{margin-bottom:0}
+  .links{margin-top:16px;font-size:15px;display:flex;flex-wrap:wrap;gap:8px 20px}
+
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 0}
+  .tag{
+    font-size:13px;padding:5px 12px;border-radius:100px;
+    border:1px solid var(--line);color:var(--muted);background:var(--card)
+  }
+
+  .pull{
+    border-left:3px solid var(--rose);padding:4px 0 4px 22px;margin:30px 0;
+    font-family:Georgia,serif;font-size:19px;line-height:1.5;color:var(--plum-soft)
+  }
+
+  /* ---------- footer ---------- */
+  footer{padding:56px 0 80px;color:var(--muted);font-size:15.5px}
+  footer .contact{display:flex;flex-wrap:wrap;gap:12px 28px;margin-bottom:28px;font-size:16.5px}
+  .rule{height:1px;background:linear-gradient(90deg,var(--gold),transparent);margin:0 0 28px}
+  @media (max-width:560px){
+    header{padding:60px 0 44px}
+    section{padding:46px 0}
+    .item{padding:22px 20px}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">April Joy &middot; Builder</div>
+  <h1>I build systems people actually use.</h1>
+  <p class="lede">
+    Apps, automations, and AI-powered workflows — scoped tightly, documented properly,
+    and tested on real people before I call them done.
+  </p>
+  <div class="meta">
+    <span><i class="dot"></i>Texas &middot; Central Time</span>
+    <span><i class="dot"></i>Claude Code &middot; Base44 &middot; Lovable &middot; Cloudflare</span>
+    <span><i class="dot"></i>Three products live and selling</span>
+  </div>
+
+  <div class="video">
+    <div class="frame">
+      <!-- REPLACE: paste your Loom/YouTube embed URL below -->
+      <iframe src="PASTE_VIDEO_EMBED_URL_HERE"
+              title="Introduction video"
+              allowfullscreen></iframe>
+    </div>
+    <p class="cap">Three minutes: how I work, and a walkthrough of what's below.</p>
+  </div>
+</header>
+
+<section>
+  <h2>Built</h2>
+  <p class="sub">Live products with paying customers — not demos.</p>
+
+  <div class="item">
+    <h3>Herbal Tea Blends App</h3>
+    <div class="role">Web app &middot; live at its own subdomain &middot; $22</div>
+    <p>
+      Takes someone's mood, flavor preference, and wellness focus and returns a blend they can
+      actually make — with proportions, steeping guidance, and a reflection prompt.
+    </p>
+    <p>
+      Built from a written spec that's still the source of truth. The spec defined the output
+      contract as JSON <em>before</em> anything was built, so the app, the sales page, and the
+      printable companion pages could all be built against the same shape instead of drifting apart.
+      It also has a section listing what the product is <strong>not allowed to do</strong> — which,
+      because the language boundary was fixed up front, turned the input categories into a controlled
+      vocabulary rather than free text. A cleaner design, arrived at through a constraint.
+    </p>
+    <div class="links">
+      <a href="https://www.herbalteablends.apriljoystudio.com/">Live app &rarr;</a>
+      <a href="https://github.com/apriljoywellness/claude-code-workspace/blob/main/specs/herbal-tea-blends-app.md">Read the spec &rarr;</a>
+    </div>
+  </div>
+
+  <div class="item">
+    <h3>Picture Me Prompt Studio</h3>
+    <div class="role">AI prompt generator &middot; live &middot; $27</div>
+    <p>
+      People kept telling me AI images "weren't for them." None of them were stuck on the technology —
+      they'd all opened ChatGPT. They were stuck on the empty box. They didn't know that a good image
+      prompt names the lighting, the camera angle, the setting, and the mood.
+    </p>
+    <p>
+      So the app asks eight plain-language questions and writes the prompt for them. Copy, paste, done.
+      <strong>It deliberately does not generate the image.</strong> Doing that would have added API cost,
+      failure states, and a support burden — and it would have moved the product away from the actual
+      problem. Keeping it a prompt generator means it works with whatever AI tool someone already has,
+      and it'll still work when they switch.
+    </p>
+    <div class="links">
+      <a href="https://apriljoystudio.com/shop/eef0b700-5454-4e6e-ab92-bd45c2c25754">See it &rarr;</a>
+    </div>
+  </div>
+
+  <div class="item">
+    <h3>Kitchen Cabinet Pharmacy — companion app</h3>
+    <div class="role">Free companion to a printed guide &middot; Base44</div>
+    <p>
+      A fast-lookup companion to a printed herbal guide. The design decision that mattered:
+      <strong>the app never states dosage amounts.</strong> Every entry links back to the guide page
+      where the age-by-age charts live.
+    </p>
+    <p>
+      Partly a legal boundary — dosing guidance inside an interactive tool carries risk that the same
+      information in an educational PDF doesn't. Partly product: the app and the guide work better as a
+      matched pair than as two things competing to be complete. It gives the guide a reason to exist and
+      keeps the app to the job it's good at.
+    </p>
+  </div>
+</section>
+
+<section>
+  <h2>Connected</h2>
+  <p class="sub">Where the pieces talk to each other.</p>
+
+  <div class="item">
+    <h3>Claude Code as a business operating system</h3>
+    <div class="role">The repo &middot; public and readable</div>
+    <p>
+      Not a chat window I paste code out of. A structured workspace where Claude reads persistent
+      context before it acts, follows written behavioral rules, executes documented SOPs, and reaches
+      real tools through MCP connections — MailerLite, Gamma, Canva, Base44, Lovable, Google Drive.
+    </p>
+    <p>
+      The thing I'd point at first is a rules file called <code>look-before-asking.md</code>. My biggest
+      early friction wasn't wrong output — it was being asked questions I'd already answered somewhere in
+      the workspace. That file maps question types to the file that holds the answer, and draws an explicit
+      line between "proceed with a stated assumption" and "stop and ask one focused question." It cut the
+      back-and-forth more than any other change I made.
+    </p>
+    <p class="pull">
+      When Claude gets something wrong in my workspace, the fix is almost always a file, not a better prompt.
+    </p>
+    <div class="links">
+      <a href="https://github.com/apriljoywellness/claude-code-workspace">Read the repo &rarr;</a>
+    </div>
+  </div>
+
+  <div class="item">
+    <h3>Client intake pipeline</h3>
+    <div class="role">Google Forms &rarr; Sheets &rarr; NotebookLM &rarr; Claude</div>
+    <p>
+      Intake answers flow into a structured sheet, become a per-client knowledge base, and come out the
+      other end as a drafted plan — without anything being retyped into three places. Built to remove the
+      part of client work that was pure transcription.
+    </p>
+  </div>
+</section>
+
+<section>
+  <h2>Noticed</h2>
+  <p class="sub">The small things that decide whether something is actually useful.</p>
+
+  <div class="item">
+    <h3>Two file formats, ten minutes, silent failure fixed</h3>
+    <p>
+      I sell printable pages. For months I attached each one as a PDF and considered it shipped.
+    </p>
+    <p>
+      Then I watched how people actually used them. Some downloaded the PDF and printed it. Others
+      screenshotted the preview image off the post and printed that — because on a phone, opening a PDF
+      and getting it to a printer is four steps, and screenshotting is one. Those screenshots printed
+      badly: low resolution, cropped edges, prompts cut off.
+    </p>
+    <p>
+      Those people were getting a worse version of the thing and <strong>I would never have heard about
+      it</strong>, because nobody emails you to say your free page printed a little fuzzy. The fix took ten
+      minutes: attach a print-ready PDF and a 300 dpi PNG to every post, so the one-step path produces a
+      good result too.
+    </p>
+  </div>
+
+  <div class="item">
+    <h3>Slides that match the page in someone's hands</h3>
+    <p>
+      I run live sessions where I walk through a printable page on screen while people write on paper.
+      I found that if the slides don't mirror the printed page exactly — same prompts, same order, one
+      prompt per slide — people lose their place and stop writing.
+    </p>
+    <p>
+      It's not a design preference. It's the difference between a session where people participate and one
+      where they watch. That rule is now written into the SOP for every live I run.
+    </p>
+  </div>
+</section>
+
+<section>
+  <h2>Systematized</h2>
+  <p class="sub">Documented so a tired version of me produces the same result as a rested one.</p>
+
+  <div class="item">
+    <h3>A weekly production pipeline that survives a full-time job</h3>
+    <p>
+      Four live sessions a week and a daily post, all pre-produced. Every recurring series has a written
+      SOP: inputs, steps, where files land, what gets published where, and a compliance check that runs
+      every time.
+    </p>
+    <p>
+      The part that makes it work isn't the steps — it's the list at the bottom of every SOP of
+      <strong>reusable assets to build once</strong>. Week one took a full day. Week four takes an evening,
+      because the templates, the standard copy blocks, and the layouts already exist. The weekly cost stays
+      flat instead of growing with the series.
+    </p>
+    <div class="links">
+      <a href="https://github.com/apriljoywellness/claude-code-workspace/blob/main/workflows/weekly-content-bundle.md">Read a real SOP &rarr;</a>
+    </div>
+  </div>
+
+  <div class="item">
+    <h3>A decision log with an outcome field</h3>
+    <p>
+      Every significant decision gets logged with its reasoning — and an outcome field that's filled in
+      later. The outcome field is the part I'd argue for hardest. It turns the log from a record of what I
+      chose into a record of whether my reasoning was any good, which is the only way to get better at the
+      next one.
+    </p>
+    <div class="links">
+      <a href="https://github.com/apriljoywellness/claude-code-workspace/blob/main/context/decisions.md">Sample entries &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>How I work</h2>
+  <p class="sub">The constraint that shaped everything above.</p>
+  <p>
+    I teach special education and dyslexia intervention full time. Everything here was built in evenings
+    and weekends, which means anything requiring me to re-explain context, re-decide a settled question, or
+    remember an undocumented step simply would not have survived.
+  </p>
+  <p>
+    That's made me unusually strict about two things. <strong>Scoping work so it actually finishes</strong> —
+    I'd rather ship the smaller thing that's genuinely done than the ambitious one stuck at eighty percent.
+    And <strong>asking whether something should be built at all</strong> — the image generator I didn't build,
+    the dosing information I kept out of an app, the features I've cut because they'd have made the demo better
+    and the product worse.
+  </p>
+  <p>
+    Teaching is also where the rest of it comes from. The whole job is taking something a student is convinced
+    they can't do, finding the step where it actually breaks, and removing everything that isn't that step.
+    That's the same instinct I bring to a confusing interface.
+  </p>
+
+  <div class="tags">
+    <span class="tag">Claude Code</span>
+    <span class="tag">MCP</span>
+    <span class="tag">Base44</span>
+    <span class="tag">Lovable</span>
+    <span class="tag">Canva Code</span>
+    <span class="tag">Cloudflare</span>
+    <span class="tag">Git &amp; GitHub</span>
+    <span class="tag">ChatGPT</span>
+    <span class="tag">Gemini</span>
+    <span class="tag">NotebookLM</span>
+    <span class="tag">MailerLite</span>
+    <span class="tag">Supabase</span>
+    <span class="tag">Google Workspace APIs</span>
+    <span class="tag">HeyGen</span>
+    <span class="tag">ElevenLabs</span>
+    <span class="tag">Gamma</span>
+    <span class="tag">Canva</span>
+  </div>
+</section>
+
+<footer>
+  <div class="rule"></div>
+  <div class="contact">
+    <a href="mailto:hello@apriljoywellness.org">hello@apriljoywellness.org</a>
+    <a href="https://github.com/apriljoywellness/claude-code-workspace">GitHub</a>
+    <a href="https://apriljoystudio.com">April Joy Studio</a>
+    <a href="https://www.youtube.com/@apriljoywellness">YouTube</a>
+  </div>
+  <p>Open to part-time contract work building AI systems. Central Time.</p>
+</footer>
+
+</div>
+</body>
+</html>
