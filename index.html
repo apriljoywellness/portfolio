@@ -74,6 +74,7 @@
   }
   .frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
   .cap{font-size:14px;color:var(--muted);margin-top:12px;font-style:italic}
+  .frame-empty span{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:var(--muted);font-size:15px;font-style:italic;letter-spacing:.02em}
 
   /* ---------- sections ---------- */
   section{padding:60px 0;border-bottom:1px solid var(--line)}
@@ -132,11 +133,9 @@
   </div>
 
   <div class="video">
-    <div class="frame">
-      <!-- REPLACE: paste your Loom/YouTube embed URL below -->
-      <iframe src="PASTE_VIDEO_EMBED_URL_HERE"
-              title="Introduction video"
-              allowfullscreen></iframe>
+    <div class="frame frame-empty">
+      <!-- VIDEO GOES HERE: replace this whole div with the iframe embed once the video is recorded -->
+      <span>▶&nbsp; Intro video coming soon</span>
     </div>
     <p class="cap">Three minutes: how I work, and a walkthrough of what's below.</p>
   </div>
@@ -189,7 +188,7 @@
 
   <div class="item">
     <h3>Kitchen Cabinet Pharmacy — companion app</h3>
-    <div class="role">Free companion to a printed guide &middot; Base44</div>
+    <div class="role">Companion to a printed guide &middot; Lovable &middot; free to my Skool community</div>
     <p>
       A fast-lookup companion to a printed herbal guide. The design decision that mattered:
       <strong>the app never states dosage amounts.</strong> Every entry links back to the guide page
